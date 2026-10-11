@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
+    color-scheme: light only;
     --canvas: #e8eee9;
     --highlight: #ffffff;
     --shadow: #c3ccc5;
@@ -15,20 +15,6 @@
     --text-muted: #455549;
     --stroke: #6b8273;
     --divider: #cfd9d1;
-  }
-
-  .dark {
-    --canvas: #121a15;
-    --highlight: #223226;
-    --shadow: #0b110e;
-    --primary: #1b5e3b;
-    --primary-dark: #134429;
-    --primary-tint: #1c3525;
-    --accent: #e6b422;
-    --text-main: #edf3ee;
-    --text-muted: #9cb0a1;
-    --stroke: #36483a;
-    --divider: #27372a;
   }
 
   body {
@@ -115,110 +101,6 @@
   border-width: 2px;
 }
 
-/* Tactile Neumorphic Utilities - Dark Mode */
-.dark .neu-flat {
-  background: #18221b;
-}
-
-.dark .neu-raised {
-  background: #18221b !important;
-  box-shadow: 6px 6px 14px #0b110e, -6px -6px 14px #243429 !important;
-}
-
-.dark .neu-raised-sm {
-  background: #18221b !important;
-  box-shadow: 3px 3px 8px #0b110e, -3px -3px 8px #243429 !important;
-}
-
-.dark .neu-raised-lg {
-  background: #18221b !important;
-  box-shadow: 8px 8px 20px #080d0a, -8px -8px 20px #243429 !important;
-}
-
-.dark .neu-pressed {
-  background: #141c16 !important;
-  box-shadow: inset 4px 4px 8px #0b110e, inset -4px -4px 8px #243429 !important;
-}
-
-.dark .neu-pressed-sm {
-  background: #141c16 !important;
-  box-shadow: inset 2px 2px 5px #0b110e, inset -2px -2px 5px #243429 !important;
-}
-
-.dark .neu-btn-primary {
-  background-color: #1b5e3b !important;
-  color: #ffffff !important;
-  box-shadow: 3px 3px 8px #0b110e, -3px -3px 8px #243429 !important;
-}
-
-.dark .neu-btn-primary:hover {
-  background-color: #23744a !important;
-}
-
-.dark .neu-btn-secondary {
-  background-color: #18221b !important;
-  color: #edf3ee !important;
-  box-shadow: 3px 3px 8px #0b110e, -3px -3px 8px #243429 !important;
-}
-
-.dark .neu-btn-secondary:hover {
-  background-color: #212e25 !important;
-}
-
-.dark .neu-input {
-  background-color: #141c16 !important;
-  box-shadow: inset 4px 4px 8px #0b110e, inset -4px -4px 8px #243429 !important;
-  border: 1px solid #36483a !important;
-  color: #edf3ee !important;
-}
-
-.dark .neu-input:focus {
-  border-color: #2e8b57 !important;
-}
-
-/* Deep Theme Utility Overrides for Dark Mode */
-.dark .bg-\[\#e8eee9\] {
-  background-color: #121a15 !important;
-}
-
-.dark .bg-\[\#dee4df\] {
-  background-color: #18221b !important;
-}
-
-.dark .bg-\[\#eff5f0\] {
-  background-color: #141c16 !important;
-}
-
-.dark .bg-\[\#dcefe3\] {
-  background-color: #1c3525 !important;
-  color: #6ee7b7 !important;
-}
-
-.dark .bg-white {
-  background-color: #18221b !important;
-  color: #edf3ee !important;
-}
-
-.dark .bg-white\/70 {
-  background-color: rgba(24, 34, 27, 0.8) !important;
-}
-
-.dark .text-\[\#16261d\] {
-  color: #edf3ee !important;
-}
-
-.dark .text-\[\#455549\] {
-  color: #9cb0a1 !important;
-}
-
-.dark .border-\[\#cfd9d1\] {
-  border-color: #27372a !important;
-}
-
-.dark .border-\[\#cfd9d1\]\/60 {
-  border-color: rgba(39, 55, 42, 0.6) !important;
-}
-
 /* Parking Bay dashed yellow accent line */
 .bay-accent-line {
   position: relative;
@@ -260,12 +142,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6b8273;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #121a15;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #27372a;
 }

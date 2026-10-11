@@ -899,6 +899,25 @@ class MockDbService {
     return true;
   }
 
+  public updateArea(
+    areaId: number,
+    data: Partial<Omit<ParkingArea, 'area_id'>>
+  ): { success: boolean; area?: ParkingArea; error?: string } {
+    const area = this.data.parking_areas.find((a) => a.area_id === areaId);
+    if (!area) return { success: false, error: 'Parking area not found' };
+    Object.assign(area, data);
+    this.save();
+    return { success: true, area };
+  }
+
+  public updateVehicleStatus(vehicleId: number, status: 'Active' | 'Inactive'): boolean {
+    const vehicle = this.data.vehicles.find((v) => v.vehicle_id === vehicleId);
+    if (!vehicle) return false;
+    vehicle.status = status;
+    this.save();
+    return true;
+  }
+
   // Parking Slots
   public getSlotsByArea(areaId: number): ParkingSlot[] {
     return this.data.parking_slots.filter((s) => s.area_id === areaId);

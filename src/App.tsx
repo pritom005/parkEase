@@ -35,6 +35,8 @@ import { UserProfile } from './pages/user/UserProfile';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { AdminUsers } from './pages/admin/AdminUsers';
+import { AdminVehicles } from './pages/admin/AdminVehicles';
+import { AdminParkingAreas } from './pages/admin/AdminParkingAreas';
 import { AdminParkingSlots } from './pages/admin/AdminParkingSlots';
 import { AdminBookings } from './pages/admin/AdminBookings';
 import { AdminPayments } from './pages/admin/AdminPayments';
@@ -144,6 +146,8 @@ const MainAppContent: React.FC = () => {
         >
           {currentView === 'admin-dashboard' && <AdminDashboard onNavigate={handleNavigate} />}
           {currentView === 'admin-users' && <AdminUsers />}
+          {currentView === 'admin-vehicles' && <AdminVehicles />}
+          {currentView === 'admin-areas' && <AdminParkingAreas />}
           {currentView === 'admin-slots' && <AdminParkingSlots />}
           {currentView === 'admin-bookings' && (
             <AdminBookings initialBookingId={viewParams?.bookingId} />

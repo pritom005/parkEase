@@ -8,19 +8,16 @@
     <meta property="og:title" content="ParkEase - Smart Parking System | Chattogram City" />
     <meta property="og:description" content="Tactile municipal and commercial smart parking reservation and telemetry management system for Chattogram Metropolitan, Bangladesh." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script>
       (function() {
         try {
-          const theme = localStorage.getItem('parkease_theme');
-          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
+          document.documentElement.classList.remove('dark');
+          localStorage.removeItem('parkease_theme');
         } catch (_) {}
       })();
     </script>
