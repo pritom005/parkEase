@@ -920,9 +920,29 @@ class MockDbService {
     return true;
   }
 
-  public addSlot(slot: Omit<ParkingSlot, 'slot_id'>): { success: boolean; slot?: ParkingSlot; error?: string } {
+  public addSlot(
+    slotOrAreaId: Omit<ParkingSlot, 'slot_id'> | number,
+    slotNumber?: string,
+    vehicleType?: VehicleType,
+    pricePerHour?: number,
+    zone?: string
+  ): { success: boolean; slot?: ParkingSlot; error?: string } {
+    let slotData: Omit<ParkingSlot, 'slot_id'>;
+    if (typeof slotOrAreaId === 'number') {
+      slotData = {
+        area_id: slotOrAreaId,
+        slot_number: slotNumber || 'S-01',
+        vehicle_type: vehicleType || 'Car',
+        price_per_hour: pricePerHour ?? (vehicleType === 'Motorcycle' ? BIKE_HOURLY_RATE : CAR_HOURLY_RATE),
+        status: 'Available',
+        zone: zone || 'Zone A (Ground Floor)',
+      };
+    } else {
+      slotData = slotOrAreaId;
+    }
+
     const exists = this.data.parking_slots.find(
-      (s) => s.area_id === slot.area_id && s.slot_number.toUpperCase() === slot.slot_number.toUpperCase()
+      (s) => s.area_id === slotData.area_id && s.slot_number.toUpperCase() === slotData.slot_number.toUpperCase()
     );
     if (exists) {
       return { success: false, error: 'Slot number already exists in this area' };
@@ -930,10 +950,36 @@ class MockDbService {
     const newId = this.data.parking_slots.length
       ? Math.max(...this.data.parking_slots.map((s) => s.slot_id)) + 1
       : 1;
-    const newSlot: ParkingSlot = { ...slot, slot_id: newId };
+    const newSlot: ParkingSlot = { ...slotData, slot_id: newId };
     this.data.parking_slots.push(newSlot);
     this.save();
     return { success: true, slot: newSlot };
+  }
+
+  public updateSlot(
+    slotId: number,
+    slotNumber: string,
+    vehicleType: VehicleType,
+    pricePerHour: number,
+    status: SlotStatus
+  ): { success: boolean; error?: string } {
+    const slot = this.getSlotById(slotId);
+    if (!slot) return { success: false, error: 'Slot not found' };
+
+    // Check duplicate slot number in same area excluding self
+    const duplicate = this.data.parking_slots.find(
+      (s) => s.slot_id !== slotId && s.area_id === slot.area_id && s.slot_number.toUpperCase() === slotNumber.trim().toUpperCase()
+    );
+    if (duplicate) {
+      return { success: false, error: 'Another slot with this number already exists in this area' };
+    }
+
+    slot.slot_number = slotNumber.trim().toUpperCase();
+    slot.vehicle_type = vehicleType;
+    slot.price_per_hour = pricePerHour;
+    slot.status = status;
+    this.save();
+    return { success: true };
   }
 
   // Overlap business rule check:
