@@ -1,0 +1,433 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ParkEase Design System (src/index.css)
+   Colors sampled from the 8 target screenshots:
+     Base Canvas:   #EDF1EE (soft sage off-white)
+     Forest Green:  #1B5238 (hover: #133C29, soft tint: #DCEBE2)
+     Dashed Accent: #D9A72A (ONLY 2px dashed dividers)
+     Shadows:       #FFFFFF (light) & #CBD3CD (dark)
+   ========================================================================== */
+
+:root {
+  /* Surface Tokens */
+  --bg-base: #EDF1EE;
+  --bg-tint: #DCEBE2;
+  --bg-inset: #E6EBE7;
+  --primary-forest: #1B5238;
+  --primary-hover: #133C29;
+  --accent-gold: #D9A72A;
+
+  /* Shadow & Border Palette */
+  --shadow-light: #FFFFFF;
+  --shadow-dark: #CBD3CD;
+  --border-subtle: #D5DDD7;
+  --border-input: #BDC7C0;
+
+  /* Typography Colors */
+  --text-heading: #10241B;
+  --text-ink: #1C2E24;
+  --text-muted: #536159;
+
+  /* Status Colors */
+  --status-available: #166534;
+  --status-available-bg: #DCEFE2;
+  --status-available-border: #9EC8AD;
+  --status-booked: #9A540E;
+  --status-booked-bg: #FCEBD7;
+  --status-booked-border: #C87619;
+  --status-occupied: #B91C1C;
+  --status-occupied-bg: #FBE2E2;
+  --status-occupied-tile: #F6ECEC;
+  --status-occupied-border: #ECA9A9;
+
+  /* Spacing Scale */
+  --spacing-0: 0px;
+  --spacing-25: 2px;
+  --spacing-50: 4px;
+  --spacing-75: 8px;
+  --spacing-100: 12px;
+  --spacing-200: 16px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-700: 64px;
+  --spacing-800: 80px;
+  --spacing-900: 96px;
+
+  /* Motion Timing */
+  --motion-base: ease-out;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-ink);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+p, span, li, label {
+  text-wrap: pretty;
+}
+
+/* Accessible Focus Ring */
+*:focus-visible {
+  outline: 3px solid var(--primary-forest) !important;
+  outline-offset: 2px !important;
+}
+
+/* 2px Dashed Accent Divider */
+.accent-dashed-border {
+  border: 0;
+  border-bottom: 2px dashed var(--accent-gold);
+}
+
+/* Neumorphic Elevations */
+.soft-raised {
+  background-color: var(--bg-base);
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  border-radius: 12px;
+}
+
+.soft-raised-sm {
+  background-color: var(--bg-base);
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  border-radius: 8px;
+}
+
+.soft-inset {
+  background-color: var(--bg-inset);
+  box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+}
+
+/* Primary Forest Green Button */
+.btn-primary-main {
+  background-color: var(--primary-forest);
+  color: #FFFFFF;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  transition: background-color 150ms ease-out, transform 150ms ease-out, box-shadow 150ms ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary-main:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary-main:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary Raised Button */
+.btn-secondary-main {
+  background-color: var(--bg-base);
+  color: var(--text-ink);
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  border: 1px solid var(--border-subtle);
+  transition: color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary-main:hover:not(:disabled) {
+  color: var(--primary-forest);
+  border-color: var(--primary-forest);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-main:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px 4px var(--shadow-dark);
+}
+
+/* Scroll Reveal Animation (150ms to 300ms ease-out) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 250ms ease-out, transform 250ms ease-out;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .soft-raised {
+    box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  }
+  .soft-raised-sm {
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  }
+}
+
+/* Signature Slot Tiles */
+.slot-tile-available {
+  background-color: var(--bg-base);
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, border-color 150ms ease-out;
+}
+
+.slot-tile-available:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-forest);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+}
+
+.slot-p-mark {
+  background-color: var(--primary-forest);
+  color: #FFFFFF;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 4px var(--shadow-dark);
+}
+
+.slot-badge-available {
+  color: var(--status-available);
+  background-color: var(--status-available-bg);
+  border: 1px solid var(--status-available-border);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.slot-tile-booked {
+  background-color: var(--bg-base);
+  border-top: 3px solid var(--status-booked-border);
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: none;
+}
+
+.slot-badge-booked {
+  color: var(--status-booked);
+  background-color: var(--status-booked-bg);
+  border: 1px solid var(--status-booked-border);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.slot-tile-occupied {
+  background-color: var(--status-occupied-tile);
+  box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+  border: 1px solid var(--status-occupied-border);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.slot-badge-occupied {
+  color: var(--status-occupied);
+  background-color: var(--status-occupied-bg);
+  border: 1px solid var(--status-occupied-border);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+/* Booking 30-Minute Reminder Toasts */
+.booking-toast-region {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+  width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+@keyframes booking-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-toast-card {
+  pointer-events: auto;
+  background-color: var(--bg-base);
+  border: 1px solid var(--status-booked-border);
+  border-top: 3px solid var(--primary-forest);
+  border-radius: 10px;
+  box-shadow: 6px 6px 16px var(--shadow-dark), -4px -4px 12px var(--shadow-light);
+  padding: 14px 16px;
+  color: var(--text-ink);
+  animation: booking-toast-enter 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-toast-card {
+    animation: none;
+  }
+}
+
+.booking-toast-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.booking-toast-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.booking-toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--bg-tint);
+  color: var(--primary-forest);
+  border: 1px solid var(--status-available-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.booking-toast-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--status-booked);
+  margin: 0 0 2px 0;
+}
+
+.booking-toast-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+}
+
+.booking-toast-close {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.booking-toast-close:hover {
+  color: var(--text-heading);
+  border-color: var(--border-subtle);
+}
+
+.booking-toast-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 0;
+  font-size: 12px;
+  color: var(--text-ink);
+}
+
+.booking-toast-detail {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.booking-toast-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.booking-toast-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 7px;
+  background-color: var(--primary-forest);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 150ms ease-out;
+}
+
+.booking-toast-action-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.booking-toast-dismiss-btn {
+  padding: 7px 12px;
+  border-radius: 7px;
+  background-color: var(--bg-inset);
+  color: var(--text-ink);
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.booking-toast-dismiss-btn:hover {
+  border-color: var(--primary-forest);
+  color: var(--primary-forest);
+}
+

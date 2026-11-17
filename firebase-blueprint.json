@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile and authentication identity",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "full_name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "phone_verified": { "type": "boolean" },
+        "phone_verified_at": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "status": { "type": "string", "enum": ["Active", "Blocked"] }
+      },
+      "required": ["user_id", "email", "role", "status"]
+    },
+    "vehicles": {
+      "title": "Vehicle",
+      "description": "Registered vehicle for parking",
+      "type": "object",
+      "properties": {
+        "vehicle_id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "vehicle_number": { "type": "string" },
+        "vehicle_type": { "type": "string", "enum": ["Car", "Motorcycle"] },
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "status": { "type": "string", "enum": ["Active", "Inactive"] }
+      },
+      "required": ["vehicle_id", "user_id", "vehicle_number", "vehicle_type"]
+    },
+    "parking_areas": {
+      "title": "Parking Area",
+      "description": "Geographical parking zone in Chattogram",
+      "type": "object",
+      "properties": {
+        "area_id": { "type": "string" },
+        "area_name": { "type": "string" },
+        "location": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "status": { "type": "string", "enum": ["Active", "Inactive"] }
+      },
+      "required": ["area_id", "area_name", "location", "status"]
+    },
+    "parking_slots": {
+      "title": "Parking Slot",
+      "description": "Individual slot in an area",
+      "type": "object",
+      "properties": {
+        "slot_id": { "type": "string" },
+        "area_id": { "type": "string" },
+        "slot_number": { "type": "string" },
+        "vehicle_type": { "type": "string", "enum": ["Car", "Motorcycle"] },
+        "price_per_hour": { "type": "number" },
+        "day_price": { "type": "number" },
+        "status": { "type": "string", "enum": ["Available", "Booked", "Occupied"] }
+      },
+      "required": ["slot_id", "area_id", "slot_number", "vehicle_type", "price_per_hour", "day_price", "status"]
+    },
+    "bookings": {
+      "title": "Booking",
+      "description": "Parking slot reservation record",
+      "type": "object",
+      "properties": {
+        "booking_id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "vehicle_id": { "type": "string" },
+        "slot_id": { "type": "string" },
+        "booking_date": { "type": "string" },
+        "booking_time": { "type": "string" },
+        "duration_hours": { "type": "number" },
+        "price_total": { "type": "number" },
+        "payment_status": { "type": "string", "enum": ["Pending", "Paid", "Refunded"] },
+        "booking_status": { "type": "string", "enum": ["Pending", "Confirmed", "Completed", "Cancelled"] },
+        "checked_in_at": { "type": "string" }
+      },
+      "required": ["booking_id", "user_id", "slot_id", "booking_date", "booking_time", "duration_hours", "price_total"]
+    },
+    "payments": {
+      "title": "Payment",
+      "description": "Financial payment transaction for a booking",
+      "type": "object",
+      "properties": {
+        "payment_id": { "type": "string" },
+        "booking_id": { "type": "string" },
+        "amount": { "type": "number" },
+        "payment_method": { "type": "string", "enum": ["bKash", "Nagad", "Rocket", "Card", "Cash"] },
+        "transaction_id": { "type": "string" },
+        "payment_date": { "type": "string" }
+      },
+      "required": ["payment_id", "booking_id", "amount", "payment_method", "transaction_id"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/users" },
+      "description": "User profiles"
+    },
+    "/vehicles/{vehicleId}": {
+      "schema": { "$ref": "#/entities/vehicles" },
+      "description": "User vehicle registrations"
+    },
+    "/parking_areas/{areaId}": {
+      "schema": { "$ref": "#/entities/parking_areas" },
+      "description": "Parking facilities in Chattogram"
+    },
+    "/parking_slots/{slotId}": {
+      "schema": { "$ref": "#/entities/parking_slots" },
+      "description": "Individual bays"
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/bookings" },
+      "description": "Reservation records"
+    },
+    "/payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/payments" },
+      "description": "Financial transactions"
+    }
+  }
+}

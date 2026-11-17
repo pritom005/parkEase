@@ -1,0 +1,6 @@
+{
+  "name": "ParkEase - Chattogram Parking System",
+  "description": "Smart parking booking website for Chattogram City with public search, user portal, and admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

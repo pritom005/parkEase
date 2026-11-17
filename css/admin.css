@@ -1,0 +1,1447 @@
+/* ==========================================================================
+   ParkEase - Admin Portal Styles (css/admin.css)
+   Reuses the shared cool sage and forest green CSS variables from css/style.css.
+   ========================================================================== */
+
+/* 1. PAGE CONTAINER, BREADCRUMB & DASHED HEADER */
+.admin-page-wrap {
+  max-width: 1220px;
+  margin: 0 auto;
+  width: 100%;
+  color: var(--text-ink);
+}
+
+.admin-breadcrumb {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 2px dashed var(--accent-gold);
+}
+
+.admin-page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.admin-page-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-header-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background-color: var(--bg-base);
+  color: var(--text-heading);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--shadow-raised-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--speed-fast) var(--ease),
+              box-shadow var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease);
+}
+
+.admin-header-link-btn:hover {
+  color: var(--primary-forest);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-raised-sm-hover);
+}
+
+.admin-header-link-btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-inset);
+}
+
+/* 2. STAT CARDS (4-COLUMN & 3-COLUMN GRIDS) */
+.admin-stats-grid-4,
+.admin-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.admin-stats-grid-compact {
+  margin-bottom: 22px;
+}
+
+.admin-stats-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.admin-stat-card,
+.admin-metric-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  transition: transform var(--speed-fast) var(--ease),
+              box-shadow var(--speed-fast) var(--ease);
+}
+
+.admin-stat-card-sm {
+  padding: 14px 18px;
+}
+
+button.admin-stat-card {
+  cursor: pointer;
+}
+
+.admin-stat-card:hover,
+.admin-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-raised-hover);
+}
+
+button.admin-stat-card:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-inset);
+}
+
+.admin-stat-header,
+.admin-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.admin-stat-label,
+.admin-metric-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.admin-stat-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: var(--bg-tint);
+  color: var(--primary-forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-stat-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.admin-stat-value,
+.admin-metric-val {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-stat-card-sm .admin-stat-value {
+  font-size: 22px;
+}
+
+.admin-stat-denom {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-stat-value.is-success {
+  color: var(--status-available);
+}
+
+.admin-stat-value.is-warning {
+  color: var(--status-booked);
+}
+
+.admin-stat-value.is-danger {
+  color: var(--status-occupied);
+}
+
+.admin-stat-split-bar {
+  display: flex;
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-input);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.admin-stat-split-car {
+  height: 100%;
+  background-color: var(--primary-forest);
+}
+
+.admin-stat-split-moto {
+  height: 100%;
+  background-color: var(--accent-gold);
+}
+
+.admin-stat-split-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-stat-progress {
+  margin-top: 10px;
+}
+
+.admin-stat-caption,
+.admin-metric-subtext {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-stat-caption.is-danger {
+  color: var(--status-occupied);
+  font-weight: 600;
+}
+
+/* Loading & Error States */
+.admin-state-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 36px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.admin-spinner {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-forest);
+  animation: adminSpin 900ms linear infinite;
+}
+
+@keyframes adminSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 3. RAISED PANEL CARDS & SECTION HEADINGS */
+.admin-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+.admin-card-flush {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.admin-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-card-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 3px 0 0 0;
+}
+
+/* 4. FILTER & SEARCH BARS */
+.admin-filter-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.admin-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-right: 4px;
+}
+
+.admin-filter-btn {
+  background-color: var(--bg-base);
+  color: var(--text-ink);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-btn);
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm);
+  transition: background-color var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease),
+              border-color var(--speed-fast) var(--ease);
+}
+
+.admin-filter-btn:hover {
+  border-color: var(--primary-forest);
+  color: var(--primary-forest);
+}
+
+.admin-filter-btn.active {
+  background-color: var(--primary-forest);
+  border-color: var(--primary-forest);
+  color: var(--text-on-primary);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.admin-search-box {
+  position: relative;
+  min-width: 240px;
+  flex: 1;
+  max-width: 340px;
+}
+
+.admin-search-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.admin-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  background-color: var(--bg-inset);
+  color: var(--text-ink);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-input);
+  font-size: 12px;
+  box-shadow: var(--shadow-inset);
+}
+
+.admin-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.admin-select {
+  padding: 8px 12px;
+  background-color: var(--bg-inset);
+  color: var(--text-ink);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-input);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: var(--shadow-inset);
+}
+
+/* 5. FLAT TABLES (INSET HEADER STRIP, THIN DIVIDERS, NO ROW SHADOW) */
+.admin-flat-table-wrap {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  overflow: hidden;
+}
+
+.admin-flat-table-titlebar {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.admin-flat-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.admin-flat-table thead {
+  background-color: var(--bg-inset);
+  border-bottom: 1px solid var(--border-input);
+}
+
+.admin-flat-table th {
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.admin-flat-table td {
+  padding: 13px 16px;
+  color: var(--text-ink);
+  vertical-align: middle;
+}
+
+.admin-flat-table tbody tr {
+  box-shadow: none;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--speed-fast) var(--ease);
+}
+
+.admin-flat-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.admin-flat-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+.admin-flat-table tbody tr.is-clickable {
+  cursor: pointer;
+}
+
+.admin-flat-table tbody tr.is-selected {
+  background-color: rgba(220, 235, 226, 0.65);
+  outline: 1px solid var(--primary-forest);
+  outline-offset: -1px;
+}
+
+.admin-flat-table tbody tr.is-inactive {
+  opacity: 0.65;
+  background-color: rgba(203, 211, 205, 0.22);
+}
+
+/* 6. PLATE TILE & ROW ACTION BUTTONS */
+.admin-plate-tile {
+  display: inline-block;
+  background-color: var(--text-heading);
+  color: #FFFFFF;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.admin-primary-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary-forest);
+  background-color: var(--bg-tint);
+  border: 1px solid var(--status-available-border);
+  border-radius: var(--radius-badge);
+}
+
+.admin-row-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: var(--radius-badge);
+  font-size: 11px;
+  font-weight: 700;
+  background-color: var(--bg-base);
+  color: var(--text-ink);
+  border: 1px solid var(--border-input);
+  cursor: pointer;
+  transition: background-color var(--speed-fast) var(--ease),
+              border-color var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease);
+}
+
+.admin-row-btn:hover {
+  border-color: var(--primary-forest);
+  color: var(--primary-forest);
+  background-color: var(--bg-tint);
+}
+
+.admin-row-btn-danger {
+  background-color: var(--status-occupied-bg);
+  color: var(--status-occupied);
+  border: 1px solid var(--status-occupied-border);
+}
+
+.admin-row-btn-danger:hover {
+  background-color: #F7D1D1;
+  border-color: var(--status-occupied);
+  color: var(--status-occupied);
+}
+
+.admin-row-btn-success {
+  background-color: var(--status-available-bg);
+  color: var(--status-available);
+  border: 1px solid var(--status-available-border);
+}
+
+.admin-row-btn-success:hover {
+  background-color: #CBE7D4;
+  border-color: var(--status-available);
+  color: var(--status-available);
+}
+
+/* 7. DASHBOARD: RECENT BOOKINGS, AREA CARDS & STATUS SUMMARY */
+.admin-recent-bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.admin-booking-tile {
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-btn);
+  box-shadow: none;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-booking-tile:hover {
+  border-color: var(--primary-forest);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .admin-booking-tile,
+  .admin-booking-tile-lift {
+    transition: transform 250ms ease-out,
+                box-shadow 250ms ease-out,
+                border-color 250ms ease-out;
+  }
+
+  .admin-booking-tile:hover,
+  .admin-booking-tile-lift:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-forest);
+    box-shadow: var(--shadow-raised-sm-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-booking-tile,
+  .admin-booking-tile-lift {
+    animation: none;
+    transition: none;
+  }
+
+  .admin-booking-tile:hover,
+  .admin-booking-tile-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.admin-booking-tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-booking-tile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.admin-booking-tile-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-booking-tile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 11px;
+}
+
+/* Status badge hover lift (250ms ease-out) and color shift in Recent Bookings and Payments tables */
+.admin-booking-tile .badge-available:hover,
+.admin-booking-tile .badge-confirmed:hover,
+.admin-flat-table .badge-available:hover,
+.admin-flat-table .badge-confirmed:hover {
+  background-color: #C9E5D2;
+  border-color: var(--primary-forest);
+  color: var(--primary-hover);
+}
+
+.admin-booking-tile .badge-booked:hover,
+.admin-flat-table .badge-booked:hover {
+  background-color: #F7DEC0;
+  border-color: var(--status-booked);
+  color: #7C4108;
+}
+
+.admin-booking-tile .badge-occupied:hover,
+.admin-booking-tile .badge-cancelled:hover,
+.admin-flat-table .badge-occupied:hover,
+.admin-flat-table .badge-cancelled:hover {
+  background-color: #F6CECE;
+  border-color: var(--status-occupied);
+  color: #991B1B;
+}
+
+.admin-booking-tile .badge-completed:hover,
+.admin-booking-tile .badge-neutral:hover,
+.admin-flat-table .badge-completed:hover,
+.admin-flat-table .badge-neutral:hover {
+  background-color: var(--bg-tint);
+  border-color: var(--primary-forest);
+  color: var(--text-heading);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .admin-booking-tile .badge-status,
+  .admin-flat-table .badge-status {
+    transition: transform 250ms ease-out,
+                background-color 250ms ease-out,
+                border-color 250ms ease-out,
+                color 250ms ease-out,
+                box-shadow 250ms ease-out;
+  }
+
+  .admin-booking-tile .badge-status:hover,
+  .admin-flat-table .badge-status:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(16, 36, 27, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-booking-tile .badge-status,
+  .admin-flat-table .badge-status {
+    transition: none;
+  }
+
+  .admin-booking-tile .badge-status:hover,
+  .admin-flat-table .badge-status:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.admin-areas-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.admin-area-overview-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-progress-track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.admin-progress-fill {
+  height: 100%;
+  background-color: var(--primary-forest);
+  border-radius: 6px;
+  transition: width var(--speed-normal) var(--ease);
+}
+
+.admin-progress-fill.is-booked {
+  background-color: var(--status-booked);
+}
+
+.admin-progress-fill.is-occupied {
+  background-color: var(--status-occupied);
+}
+
+.admin-dashboard-lower-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.admin-status-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-status-summary-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 16px 18px;
+}
+
+.admin-status-summary-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-heading);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 2px dashed var(--accent-gold);
+}
+
+.admin-status-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-status-summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-btn);
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+/* 8. TWO-COLUMN TABLE + DETAILS INSPECTOR (USERS & BOOKINGS) */
+.admin-two-col-inspector,
+.admin-user-mgmt-layout {
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 20px;
+  align-items: start;
+}
+
+.admin-detail-inspector {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 20px;
+  position: sticky;
+  top: 84px;
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.inspector-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-btn);
+  background-color: var(--primary-forest);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.inspector-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.inspector-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.inspector-inset-box {
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-btn);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: 12px;
+}
+
+.inspector-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.inspector-row-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.inspector-row-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-ink);
+}
+
+/* 9. PARKING SLOTS GRID & TILES */
+.admin-slots-filter-card,
+.admin-slots-toolbar-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-slots-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+
+.admin-slot-tile {
+  border-radius: var(--radius-btn);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 126px;
+  transition: transform var(--speed-fast) var(--ease),
+              box-shadow var(--speed-fast) var(--ease);
+}
+
+.admin-slot-tile.is-available {
+  background-color: var(--bg-base);
+  box-shadow: var(--shadow-raised-sm);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.admin-slot-tile.is-available:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-raised-sm-hover);
+}
+
+.admin-slot-tile.is-booked {
+  background-color: var(--bg-base);
+  border-top: 3px solid var(--status-booked-border);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+
+.admin-slot-tile.is-occupied {
+  background-color: var(--status-occupied-tile);
+  box-shadow: var(--shadow-inset);
+  border: 1px solid var(--status-occupied-border);
+}
+
+.admin-slot-p-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background-color: var(--primary-forest);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-slot-edit-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease);
+}
+
+.admin-slot-edit-btn:hover {
+  border-color: var(--primary-forest);
+  color: var(--primary-forest);
+}
+
+/* 10. REPORTS TABS & BREAKDOWNS */
+.admin-reports-tabs,
+.reports-category-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  padding: 10px 14px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.admin-report-tab-btn,
+.report-tab-btn {
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-ink);
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: var(--shadow-raised-sm);
+  transition: background-color var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease),
+              border-color var(--speed-fast) var(--ease);
+}
+
+.admin-report-tab-btn:hover,
+.report-tab-btn:hover {
+  border-color: var(--primary-forest);
+  color: var(--primary-forest);
+}
+
+.admin-report-tab-btn.active,
+.report-tab-btn.active {
+  background-color: var(--primary-forest);
+  border-color: var(--primary-forest);
+  color: var(--text-on-primary);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.admin-reports-breakdown-2,
+.reports-breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.breakdown-card {
+  background-color: var(--bg-base);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.breakdown-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 10px 14px;
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-btn);
+}
+
+.breakdown-row-name {
+  color: var(--text-ink);
+  font-weight: 600;
+}
+
+.breakdown-row-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+/* 11. ADMIN MODALS */
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 650;
+  background-color: rgba(16, 36, 27, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.admin-modal-card {
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  box-shadow: 0 18px 40px rgba(16, 36, 27, 0.28);
+  max-width: 460px;
+  width: 100%;
+  padding: 24px;
+  color: var(--text-ink);
+  position: relative;
+}
+
+/* 12. RESPONSIVE BREAKPOINTS (1440, 1024, 768, 640) */
+@media (max-width: 1180px) {
+  .admin-slots-tile-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-stats-grid-4,
+  .admin-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-recent-bookings-grid,
+  .admin-areas-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-dashboard-lower-grid,
+  .admin-two-col-inspector,
+  .admin-user-mgmt-layout,
+  .admin-reports-breakdown-2,
+  .reports-breakdown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-detail-inspector {
+    position: static;
+  }
+
+  .admin-slots-tile-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-stats-grid-4,
+  .admin-metrics-grid,
+  .admin-stats-grid-3,
+  .admin-recent-bookings-grid,
+  .admin-areas-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-slots-tile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-search-box {
+    max-width: 100%;
+  }
+}
+
+/* 13. FINANCIAL AUDIT PRINT SHEET & EXPORT VIEW */
+.audit-print-sheet {
+  display: none;
+  background-color: #ffffff;
+  color: var(--text-heading);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  padding: 28px 32px;
+  margin-top: 8px;
+}
+
+.audit-print-sheet.is-preview-open {
+  display: block;
+}
+
+.audit-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed var(--accent-gold);
+}
+
+.audit-sheet-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audit-sheet-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  background-color: var(--primary-forest);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audit-sheet-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 2px 0;
+}
+
+.audit-sheet-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.audit-sheet-meta {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px 16px;
+  font-size: 12px;
+  color: var(--text-ink);
+  text-align: right;
+}
+
+.audit-sheet-meta-label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.audit-sheet-meta-value {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.audit-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.audit-kpi-box {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background-color: #f9fbf9;
+}
+
+.audit-kpi-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.audit-kpi-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.audit-kpi-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.audit-section {
+  margin-bottom: 22px;
+  break-inside: avoid;
+}
+
+.audit-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin: 0 0 10px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.audit-tables-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.audit-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background-color: #f4f7f5;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.audit-table td {
+  padding: 8px 10px;
+  color: var(--text-ink);
+  border-bottom: 1px solid #e6ece8;
+}
+
+.audit-table tfoot td {
+  font-weight: 700;
+  color: var(--text-heading);
+  background-color: #f4f7f5;
+  border-top: 1px solid var(--border-input);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.audit-table .text-right {
+  text-align: right;
+}
+
+.audit-signoff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  break-inside: avoid;
+}
+
+.audit-signoff-line {
+  padding-top: 28px;
+  border-bottom: 1px solid var(--border-input);
+  margin-bottom: 6px;
+}
+
+.audit-signoff-caption {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .audit-kpi-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .audit-tables-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm 12mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #10241b !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .site-navbar,
+  .portal-mobile-bar,
+  .sidebar,
+  .site-footer,
+  .admin-breadcrumb,
+  .admin-page-header,
+  .admin-reports-tabs,
+  .admin-reports-screen-only,
+  .no-print {
+    display: none !important;
+  }
+
+  .portal-layout {
+    display: block !important;
+    min-height: auto !important;
+    background: #ffffff !important;
+  }
+
+  .portal-main,
+  .admin-page-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .audit-print-sheet {
+    display: block !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .audit-kpi-strip {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .audit-tables-split {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .audit-table tr {
+    break-inside: avoid;
+  }
+}
+

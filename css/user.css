@@ -1,0 +1,648 @@
+/* ==========================================================================
+   ParkEase - User Portal Styles (css/user.css)
+   Matched to screenshots 2 to 8 using shared CSS variables
+   ========================================================================== */
+
+/* 1. WRAPPER & PAGE HEADER */
+.user-portal-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.user-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5, 20px);
+}
+
+.user-page-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-forest, #1B5238);
+  margin-bottom: 4px;
+}
+
+.user-page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+  margin-bottom: 4px;
+}
+
+.user-page-subtitle {
+  font-size: 13px;
+  color: var(--text-muted, #536159);
+  margin: 0;
+}
+
+/* 2. SUMMARY KPI ROW (3 COLUMNS) */
+.user-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4, 16px);
+  margin-bottom: var(--space-5, 20px);
+}
+
+.user-stat-card {
+  background-color: var(--bg-base, #EDF1EE);
+  box-shadow: var(--shadow-raised, 6px 6px 14px #CBD3CD, -6px -6px 14px #FFFFFF);
+  border-radius: var(--radius-card, 12px);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: transform var(--speed-fast, 150ms) var(--ease, ease-out);
+}
+
+.user-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.user-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.user-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #536159);
+}
+
+.user-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.user-stat-hint {
+  font-size: 12px;
+  color: var(--text-muted, #536159);
+  margin-top: 4px;
+}
+
+/* 3. DASHBOARD ACTIVE RESERVATION & INSET SUB-TILES */
+.user-ticket-card {
+  background-color: var(--bg-base, #EDF1EE);
+  box-shadow: var(--shadow-raised, 6px 6px 14px #CBD3CD, -6px -6px 14px #FFFFFF);
+  border-radius: var(--radius-card, 12px);
+  padding: 22px 24px;
+  margin-bottom: var(--space-5, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.user-ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle, #D5DDD7);
+}
+
+.ticket-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.ticket-sub-tile {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  border-radius: var(--radius-btn, 8px);
+  padding: 12px 14px;
+}
+
+.ticket-data-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #536159);
+  margin-bottom: 4px;
+}
+
+.ticket-data-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+}
+
+.ticket-plate-badge {
+  background-color: var(--text-heading, #10241B);
+  color: #FFFFFF;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge, 6px);
+  display: inline-block;
+}
+
+/* 4. VEHICLE MANAGEMENT PAGE */
+.user-vehicle-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-5, 20px);
+  align-items: start;
+}
+
+.user-vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vehicle-entry-card {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  border-radius: var(--radius-btn, 8px);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: border-color var(--speed-fast, 150ms) var(--ease, ease-out);
+}
+
+.vehicle-entry-card:hover {
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.vehicle-entry-card.is-primary {
+  border: 2px solid var(--primary-forest, #1B5238);
+  background-color: rgba(220, 235, 226, 0.35);
+}
+
+.vehicle-info-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle-plate-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+}
+
+.vehicle-model-subtext {
+  font-size: 12px;
+  color: var(--text-muted, #536159);
+}
+
+/* 5. FIND PARKING PAGE (AREA TILES, SUMMARY CARDS, SLOT GRID) */
+.area-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.area-select-tile {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  border-radius: var(--radius-btn, 8px);
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--speed-fast) var(--ease),
+              background-color var(--speed-fast) var(--ease),
+              color var(--speed-fast) var(--ease);
+}
+
+.area-select-tile:hover {
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.area-select-tile.selected {
+  background-color: var(--primary-forest, #1B5238);
+  border-color: var(--primary-forest, #1B5238);
+  color: #FFFFFF;
+}
+
+.area-select-tile.selected span,
+.area-select-tile.selected p {
+  color: #FFFFFF;
+}
+
+.find-parking-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.find-slot-tile {
+  border-radius: var(--radius-btn, 8px);
+  padding: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--speed-fast, 150ms) var(--ease, ease-out),
+              box-shadow var(--speed-fast, 150ms) var(--ease, ease-out),
+              border-color var(--speed-fast, 150ms) var(--ease, ease-out);
+}
+
+.find-slot-tile.is-available {
+  background-color: var(--bg-base, #EDF1EE);
+  box-shadow: var(--shadow-raised-sm, 3px 3px 8px #CBD3CD, -3px -3px 8px #FFFFFF);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+.find-slot-tile.is-available:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.find-slot-tile.is-selected {
+  border: 2px solid var(--primary-forest, #1B5238);
+  background-color: var(--bg-tint, #DCEBE2);
+}
+
+.find-slot-tile.is-booked {
+  background-color: var(--bg-base, #EDF1EE);
+  border-top: 3px solid var(--status-booked-border, #C87619);
+  border-left: 1px solid var(--border-subtle, #D5DDD7);
+  border-right: 1px solid var(--border-subtle, #D5DDD7);
+  border-bottom: 1px solid var(--border-subtle, #D5DDD7);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.find-slot-tile.is-occupied {
+  background-color: var(--status-occupied-tile, #F6ECEC);
+  box-shadow: var(--shadow-inset, inset 3px 3px 7px #CBD3CD, inset -3px -3px 7px #FFFFFF);
+  border: 1px solid var(--status-occupied-border, #ECA9A9);
+  cursor: not-allowed;
+}
+
+.find-parking-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--shadow-dark, #CBD3CD);
+  border-top-color: var(--primary-forest, #1B5238);
+  border-radius: 50%;
+  animation: parkease-spin 0.7s linear infinite;
+}
+
+@keyframes parkease-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 6. SLOT RESERVATION & BOOKING PAGE */
+.booking-stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-btn, 8px);
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  box-shadow: var(--shadow-raised-sm, 3px 3px 8px #CBD3CD, -3px -3px 8px #FFFFFF);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted, #536159);
+}
+
+.step-item.active {
+  background-color: var(--primary-forest, #1B5238);
+  border-color: var(--primary-forest, #1B5238);
+  color: #FFFFFF;
+}
+
+.step-item.active span {
+  color: #FFFFFF;
+}
+
+.step-item.done {
+  color: var(--primary-forest, #1B5238);
+  border-color: var(--status-available-border, #9EC8AD);
+}
+
+.user-booking-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: var(--space-5, 20px);
+  align-items: start;
+}
+
+.vehicle-select-grid,
+.duration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.option-select-card {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  border-radius: var(--radius-btn, 8px);
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--speed-fast) var(--ease),
+              background-color var(--speed-fast) var(--ease);
+}
+
+.option-select-card:hover:not(:disabled) {
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.option-select-card.selected {
+  border: 2px solid var(--primary-forest, #1B5238);
+  background-color: rgba(220, 235, 226, 0.4);
+}
+
+.option-select-card:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.booking-summary-card {
+  position: sticky;
+  top: 80px;
+}
+
+.summary-calc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 0;
+  color: var(--text-ink, #1C2E24);
+}
+
+.summary-calc-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 2px dashed var(--accent-gold, #D9A72A);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 7. PAYMENT PAGE */
+.user-payment-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: var(--space-5, 20px);
+  align-items: start;
+}
+
+.brief-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.payment-gateway-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.gateway-tile {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  border-radius: var(--radius-btn, 8px);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--speed-fast) var(--ease),
+              background-color var(--speed-fast) var(--ease);
+}
+
+.gateway-tile:hover {
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.gateway-tile.selected {
+  background-color: var(--bg-tint, #DCEBE2);
+  border: 2px solid var(--primary-forest, #1B5238);
+}
+
+.gateway-logo-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-badge, 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11px;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.invoice-total-box {
+  background-color: var(--bg-inset, #E6EBE7);
+  border: 1px solid var(--border-input, #BDC7C0);
+  border-radius: var(--radius-btn, 8px);
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+
+/* 8. BOOKING HISTORY PAGE */
+.active-session-banner {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 2px solid var(--primary-forest, #1B5238);
+  border-radius: var(--radius-card, 12px);
+  box-shadow: var(--shadow-raised-sm, 3px 3px 8px #CBD3CD, -3px -3px 8px #FFFFFF);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.history-filter-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filter-tab-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-tab-btn {
+  background-color: var(--bg-base, #EDF1EE);
+  border: 1px solid var(--border-subtle, #D5DDD7);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-ink, #1C2E24);
+  padding: 7px 14px;
+  border-radius: var(--radius-btn, 8px);
+  cursor: pointer;
+  box-shadow: var(--shadow-raised-sm, 3px 3px 8px #CBD3CD, -3px -3px 8px #FFFFFF);
+  transition: background-color var(--speed-fast, 150ms) var(--ease, ease-out),
+              color var(--speed-fast, 150ms) var(--ease, ease-out);
+}
+
+.filter-tab-btn:hover {
+  border-color: var(--primary-forest, #1B5238);
+}
+
+.filter-tab-btn.active {
+  background-color: var(--primary-forest, #1B5238);
+  border-color: var(--primary-forest, #1B5238);
+  color: #FFFFFF;
+}
+
+.history-search-input {
+  max-width: 280px;
+}
+
+/* 9. PROFILE PAGE */
+.user-profile-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 22px 24px;
+  margin-bottom: var(--space-5, 20px);
+}
+
+.profile-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.user-profile-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5, 20px);
+}
+
+/* 10. EMPTY STATES */
+.user-empty-state {
+  background-color: var(--bg-inset, #E6EBE7);
+  box-shadow: var(--shadow-inset, inset 3px 3px 7px #CBD3CD, inset -3px -3px 7px #FFFFFF);
+  border: 1px solid var(--border-input, #BDC7C0);
+  border-radius: var(--radius-card, 12px);
+  padding: 36px 24px;
+  text-align: center;
+}
+
+.user-empty-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-heading, #10241B);
+  margin-bottom: 4px;
+}
+
+.user-empty-desc {
+  font-size: 13px;
+  color: var(--text-muted, #536159);
+  max-width: 400px;
+  margin: 0 auto 16px;
+}
+
+/* 11. RESPONSIVE BREAKPOINTS (1440, 768, 390) */
+@media (max-width: 1180px) {
+  .area-selector-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .find-parking-slots-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .user-stat-grid,
+  .ticket-sub-grid,
+  .profile-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-vehicle-layout,
+  .user-booking-layout,
+  .user-payment-layout,
+  .user-profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-summary-card {
+    position: static;
+  }
+
+  .booking-stepper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .find-parking-slots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .area-selector-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .booking-stepper,
+  .vehicle-select-grid,
+  .duration-grid,
+  .brief-sub-grid,
+  .payment-gateway-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .find-parking-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .history-filter-strip {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .history-search-input {
+    max-width: 100%;
+  }
+}

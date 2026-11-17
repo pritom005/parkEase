@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+python/.env
+python/.env.*
+database/
+node_modules/
+dist/
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+.git/
+.aistudio/
